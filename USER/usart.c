@@ -112,33 +112,33 @@ void USART_DMA_Config(u32 BaudRate1,u32 BaudRate2,u32 BaudRate3)
 	DMA_ITConfig(DMA1_Channel5, DMA_IT_TC, ENABLE);
 	DMA_Cmd(DMA1_Channel5, DISABLE);
 	
-// 	DMA_DeInit(DMA1_Channel6);
-// 	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)(&USART2->DR);	 //ADC地址
-// 	DMA_InitStructure.DMA_MemoryBaseAddr = (u32)Gyro_RxBuffer1;//内存地址
-// 	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
-// 	DMA_InitStructure.DMA_BufferSize = Gyro_RxBufferSize;
-// 	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;//外设地址固定
-// 	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;  //内存地址固定
-// 	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;	//8位
-// 	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-// 	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;		//循环传输
-// 	DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
-// 	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
-// 	DMA_Init(DMA1_Channel6, &DMA_InitStructure);
+	DMA_DeInit(DMA1_Channel6);
+	DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)(&USART2->DR);	 //ADC地址
+	DMA_InitStructure.DMA_MemoryBaseAddr = (u32)Gyro_RxBuffer1;//内存地址
+	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;
+	DMA_InitStructure.DMA_BufferSize = Gyro_RxBufferSize;
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;//外设地址固定
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;  //内存地址固定
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;	//8位
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;		//循环传输
+	DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh;
+	DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+	DMA_Init(DMA1_Channel6, &DMA_InitStructure);
 
-// 	NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel6_IRQn;
-// 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-// 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-// 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-// 	NVIC_Init(&NVIC_InitStructure);
-// 	
-// 	USART_ClearFlag(USART2, USART_FLAG_TC);
-// 	USART_DMACmd(USART2, USART_DMAReq_Rx, ENABLE);
-// 	DMA_ITConfig(DMA1_Channel6, DMA_IT_TC, ENABLE);
-// 	DMA_Cmd(DMA1_Channel6, DISABLE);
+	NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel6_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+	
+	USART_ClearFlag(USART2, USART_FLAG_TC);
+	USART_DMACmd(USART2, USART_DMAReq_Rx, ENABLE);
+	DMA_ITConfig(DMA1_Channel6, DMA_IT_TC, ENABLE);
+	DMA_Cmd(DMA1_Channel6, DISABLE);
 	
 	USART_DMA_EN0();
-	//USART_DMA_EN1();
+	USART_DMA_EN1();
 }
 
 void USART_SendByte(USART_TypeDef *USARTx, uint8_t dat)

@@ -118,7 +118,7 @@ void SysTick_Init(void)
 void SysTick_Handler(void)
 {
   Write_Database(MISO_ANG_UP);
-// 	Write_Database(MISO_ANG_DOWN); 
+ 	Write_Database(MISO_ANG_DOWN); 
 //	LED = !LED;
 }
 

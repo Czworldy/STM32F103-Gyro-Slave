@@ -8,7 +8,7 @@ int main(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	delay_init();
 	USART_GPIO_Init();
-	USART_DMA_Config(115200,0,115200);
+	USART_DMA_Config(115200,115200,0); //use USART1 & USART2
 	IO_Config();
 
 	TIM2_3_Config();
